@@ -1,0 +1,95 @@
+body{
+	margin: 0;
+}
+.navheader{
+	display: flex;
+	height: 12vh;
+	background-color: gray;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+	font-weight: 700;
+	color: #FFF;
+	font-family: HYQihei 40S;
+	font-style:oblique
+}
+.nav{
+	display: flex;
+	flex-direction: row;
+	height: 10vh;
+	background-color: darkgray;
+	justify-content: space-around;
+	align-items: center;
+	color: #FFF;
+}
+.search{
+	width: 250px;
+}
+.search>input{
+	width: 10vw;
+	text-overflow:ellipsis; 
+}
+.link{
+	height: 100%;
+	line-height: 100%;
+	padding: 0 3vw;
+	display: flex;
+	align-items: center;
+	word-break:keep-all; 
+	text-overflow:ellipsis; 
+}
+.link:hover{
+	background-color: cadetblue;
+}
+.content{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background-color: #808080;
+}
+.main{
+	display: flex;
+	flex-direction: row;
+	width: 58vw;
+	background-color: #FFF;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.gg{
+	width: 15vw;
+	background-color: darkturquoise;
+}
+.box{
+	width: 13vw;
+	background-color: #FFF;
+	border: 1px solid gainsboro;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 8px;
+	height: 58vh;
+	text-align: center;
+	margin: 1vh 0;
+}
+.box>p{
+	overflow: auto;
+	word-break: break-all;
+	border-bottom: 1px dashed lightsteelblue;
+	height: 4vh;
+	text-align: center;
+	padding: 0 3vw;
+}
+.box>span{
+	overflow: auto;
+	word-break: break-all;
+	height: 4vh;
+	text-align: center;
+	padding: 0 3vw;
+}
+.box>img{
+	height: 40vh;
+}
+.box:hover{
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+}
