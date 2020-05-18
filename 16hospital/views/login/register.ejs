@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>医院管理注册</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/font.css">
+	<link rel="stylesheet" href="/static/css/weadmin.css">
+    <script src="/js/jquery.min.js" charset="utf-8"></script>
+	<script src="/lib/layui/layui.js" charset="utf-8"></script>
+	<style>
+	.hide{
+		display: none;
+	}
+	</style>
+
+</head>
+<body class="login-bg">
+    
+    <div class="login">
+        <div class="message">管理注册</div>
+        <div id="darkbannerwrap"></div>
+        
+        <form action="/login/register" method="post" class="layui-form" >
+            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" id="username" ><p id="checkName" class="hide" style="color: red;margin-top: 1vh;">用户名已存在</p>
+            <hr class="hr15">
+            <input name="password1" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+			<hr class="hr15">
+			<input name="password2" lay-verify="required" placeholder="确认密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input class="loginin" value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+    </div>
+
+    <script type="text/javascript">
+	$(function(){
+		$('#username').change(function(){
+			layui.use('layer', function(){
+			  var layer = layui.layer;
+			    layer.msg('注册成功<br>3后跳转登录页面', {
+				  time: 3000, //20s后自动关闭
+				});
+			}); 
+			 let val = this.value
+			 console.log(val)
+			 let obj = {
+				 username:val
+			 }
+			 $.ajax({
+				 url:'/login/seekName',
+				 type:'get',
+				 data:obj,
+				 success:function(res){
+					 if(res.exist){
+						$('#checkName').removeClass('hide')
+					 }else{
+						 $('#checkName').addClass('hide')
+					 }
+				 },
+				 err:function(e){
+					 console.log(e.status);
+					 console.log(e.responseText)
+				 }
+			 })
+		})
+	})
+       
+   //      	layui.extend({
+			// 	admin: '{/}./static/js/admin'
+			// });
+   //          layui.use(['form','admin'], function(){
+   //            var form = layui.form
+   //            	,admin = layui.admin;
+   //            // layer.msg('玩命卖萌中', function(){
+   //            //   //关闭后的操作
+   //            //   });
+   //            //监听提交
+   //            form.on('submit(login)', function(data){
+   //              // alert(888)
+   //              layer.msg(JSON.stringify(data.field),function(){
+   //                  location.href='./index.html'
+   //              });
+   //              return false;
+   //            });
+   //          });   
+    </script>  
+    <!-- 底部结束 -->
+</body>
+</html>
